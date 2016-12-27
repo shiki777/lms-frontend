@@ -1,0 +1,9 @@
+.room-container {
+    width: 700px;
+    margin-top: 50px !important;
+}
+
+.ui.button.uploadBtn {
+    width: 150px;
+    margin-top: 10px;
+}
