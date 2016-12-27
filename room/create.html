@@ -84,19 +84,38 @@
                         <img class="ui small image" src="./image.png">    
                         <div class="ui primary button upload-btn">上传图片</div>
                     </div>
-                    <div class="inline field">
-                        <div class="ui checkbox">
-                            <input name="terms" type="checkbox">    
-                            <label>同意协议</label>
-                        </div>
-                    </div>
                     <div class="ui primary submit button">提交</div>
                     <div class="ui reset button">重置</div>
                 </form>
             </div>
         </div>
     </div>
+    <div class="ui modal"> <i class="close icon"></i>
+        <div class="header">恭喜您</div>
+        <div class="image content">
+            <div class="description">
+                <div class="ui header">房间创建成功！</div>
+                <p>
+                    该房间关联用户的用户名是: snaligame001
+                </p>
+                <p>密码是 fegre1</p>
+                <p>请妥善保管！</p>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">知道了</div>
+<!--             <div class="ui positive right labeled icon button">
+                Yep, that's me <i class="checkmark icon"></i>
+            </div> -->
+        </div>
+    </div>
 <script src="../lib/jquery.min.js"></script>
-<script src="../lib/semantic.min.js"></script>    
+<script src="../lib/semantic.min.js"></script> 
+<script>
+    $('.submit').on('click', function() {
+        $('.ui.modal')
+        .modal('show');
+    })
+</script>   
 </body>
 </html>
