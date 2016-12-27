@@ -1,5 +1,6 @@
   $(document)
     .ready(function() {
+
       $('.ui.form')
         .form({
           fields: {
@@ -25,6 +26,9 @@
                 }
               ]
             }
+          },
+          onSuccess : function() {
+            return false;
           }
         })
       ;
