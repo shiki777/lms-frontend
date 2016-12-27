@@ -10,79 +10,90 @@
 <body>
     <div class="page">
         <div class="ui middle aligned center aligned grid">
-            <form class="ui form segment room-container">
-                <div class="two fields">
-                    <div class="field">
-                        <label>房间名称</label>
-                        <input placeholder="房间名称" name="name" type="text"></div>
-                    <div class="field">
-                        <label>房间权重</label>
-                        <input type="number" value="1"/>
-                    </div>
-                </div>
-                <div class="field">
-                    <label>房间简介</label>
-                    <input placeholder="简介" name="username" type="text"/>
-                </div>
-                <div class="fields three">
-                    <div class="field">
-                        <label>独立收费</label>
-                        <select name="" id="">
-                            <option value="0">否</option>
-                            <option value="1">是</option>
-                        </select>
-                    </div>                  
-                    <div class="field">
-                        <label>所属频道</label>
-                        <select name="" id="">
-                            <option value="1">网红</option>
-                            <option value="2">世界</option>
-                            <option value="3">百家</option>
-                        </select>                    
+            <div class="wrap">
+                <h1 class="ui header aligned">创建房间</h1>
+                <form class="ui form segment room-container">
+                    <div class="two fields">
+                        <div class="field">
+                            <label>房间名称</label>
+                            <input placeholder="房间名称" name="name" type="text"></div>
+                        <div class="field">
+                            <label>房间权重</label>
+                            <input type="number" value="1"/>    
+                        </div>
                     </div>
                     <div class="field">
-                        <label>人气系数</label>
-                        <input type="number" value="1"/>
+                        <label>房间简介</label>
+                        <input placeholder="简介" name="username" type="text"/>    
                     </div>
-                </div>
-                <div class="field">
-                    <label>收费策略</label>
-                    <div class="charge-wrap">
-                        <div class="inline">
-                            <input type="number" class="charge-input-money" value="100"/><span class="charge-span">元</span>
-                            <input type="number" class="charge-input-duration" value="20"/>
-                            <select class="charge-input"  name="" id="">
-                                <option value="day">天</option>
-                                <option value="mouth">月</option>
-                                <option value="year">年</option>
+                    <div class="fields three">
+                        <div class="field">
+                            <label>独立收费</label>
+                            <select name="" id="">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
                             </select>
                         </div>
-                        <div class="inline">
-                            <input type="number" class="charge-input-money" value="300"/><span class="charge-span">元</span>
-                            <input type="number" class="charge-input-duration" value="2"/>
-                            <select class="charge-input"  name="" id="">
-                                <option value="day">天</option>
-                                <option value="mouth" selected>月</option>
-                                <option value="year">年</option>
+                        <div class="field">
+                            <label>所属频道</label>
+                            <select name="" id="">
+                                <option value="1">网红</option>
+                                <option value="2">世界</option>
+                                <option value="3">百家</option>
                             </select>
-                        </div>                        
+                        </div>
+                        <div class="field">
+                            <label>人气系数</label>
+                            <input type="number" value="1"/>    
+                        </div>
                     </div>
-                    <div class="ui primary button charge-btn">添加策略</div>
-                </div>                
-                <div class="field">
-                    <label>封面上传</label>
-                    <img class="ui small image" src="./image.png">
-                    <div class="ui primary button upload-btn">上传图片</div>
-                </div>
-                <div class="inline field">
-                    <div class="ui checkbox">
-                        <input name="terms" type="checkbox">            
-                        <label>I agree to the terms and conditions</label>
+                    <div class="field">
+                        <label>收费策略</label>
+                        <div class="charge-wrap">
+                            <div class="inline">
+                                <input type="number" class="charge-input-money" value="100"/>    
+                                <span class="charge-span">元</span>
+                                <input type="number" class="charge-input-duration" value="20"/>    
+                                <select class="charge-input"  name="" id="">
+                                    <option value="day">天</option>
+                                    <option value="mouth">月</option>
+                                    <option value="year">年</option>
+                                </select>
+                                <div class="negative ui button delete-btn"> <i class="minus icon delete-icon"></i>
+                                    删除
+                                </div>
+                            </div>
+                            <div class="inline">
+                                <input type="number" class="charge-input-money" value="300"/>    
+                                <span class="charge-span">元</span>
+                                <input type="number" class="charge-input-duration" value="2"/>    
+                                <select class="charge-input"  name="" id="">
+                                    <option value="day">天</option>
+                                    <option value="mouth" selected>月</option>
+                                    <option value="year">年</option>
+                                </select>
+                                <div class="negative ui button delete-btn"> <i class="minus icon delete-icon"></i>
+                                    删除
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui primary button charge-btn">添加策略</div>
                     </div>
-                </div>
-                <div class="ui primary submit button">提交</div>
-                <div class="ui reset button">重置</div>
-            </form>
+                    <div class="field">
+                        <label>封面上传</label>
+                        <img class="ui small image" src="./image.png">    
+                        <div class="ui primary button upload-btn">上传图片</div>
+                    </div>
+                    <div class="inline field">
+                        <div class="ui checkbox">
+                            <input name="terms" type="checkbox">    
+                            <label>同意协议</label>
+                        </div>
+                    </div>
+                    <div class="ui primary submit button">提交</div>
+                    <div class="ui reset button">重置</div>
+                </form>
+            </div>
         </div>
     </div>
 <script src="../lib/jquery.min.js"></script>
