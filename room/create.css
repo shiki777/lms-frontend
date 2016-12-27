@@ -3,7 +3,43 @@
     margin-top: 50px !important;
 }
 
-.ui.button.uploadBtn {
+.ui.button.upload-btn {
     width: 150px;
+    margin-top: 10px;
+}
+
+.ui.form input.charge-input-money {
+    width: 80px;
+    padding-left: 10px;
+    text-align: center;
+    padding-right: 0;
+}
+
+.ui.form input.charge-input-duration {
+    width: 60px;
+    padding-left: 10px;
+    text-align: center;
+    padding-right: 0;
+}
+
+.ui.form select.charge-input {
+    width: 54px;
+    display: inline-block;
+    padding-right: 0;
+    padding-left: 10px;
+}
+
+.charge-span {
+    display: inline-block;
+    margin-left: 3px;
+    margin-right: 1px;
+}
+
+.ui.primary.button.charge-btn {
+    width: 120px;
+    margin-top: 10px;    
+}
+
+.charge-wrap .inline {
     margin-top: 10px;
 }
