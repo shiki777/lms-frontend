@@ -60,9 +60,9 @@
                     <div class="field">
                         <label>收费策略</label>
                         <div class="charge-wrap">
-                            <charge v-for="item in chargeStrategy" v-bind:money="item.money" v-bind:duration="item.duration" v-bind:unit="item.unit"></charge>
+                            <charge v-for="item in chargeStrategy" :money="item.money" :duration="item.duration" :unit="item.unit" :id="item.id" ref="charges"></charge>
                         </div>
-                        <div class="ui primary button charge-btn">添加策略</div>
+                        <div class="ui primary button charge-btn" @click="addStrategy">添加策略</div>
                     </div>
                     <imguploader title="封面上传" thumb="http://w1.hoopchina.com.cn/e9/57/ab/e957ab0f18cc02cd4bf967cc402b0e09001.jpg"></imguploader>
                     <imguploader title="U3D背景图片上传" thumb="http://w1.hoopchina.com.cn/e9/57/ab/e957ab0f18cc02cd4bf967cc402b0e09001.jpg"></imguploader>     

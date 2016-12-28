@@ -10,7 +10,7 @@ Vue.component('charge',{
                         </select>\
                         <div class="negative ui button delete-btn" v-on:click="remove"> <i class="minus icon delete-icon"></i>删除</div>\
                 </div>',
-    props : ['money','duration','unit'],
+    props : ['money','duration','unit', 'id'],
     data : function() {
         return {
             m : this.money || 30,
