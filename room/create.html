@@ -60,14 +60,13 @@
                     <div class="field" :style="{display : changeShow}">
                         <label>收费策略</label>
                         <div class="charge-wrap">
-                            <charge v-for="item in chargeStrategy" :money="item.money" :duration="item.duration" :unit="item.unit" :id="item.id" ref="charges"></charge>
+                            <charge v-for="item in chargeStrategy" :money="item.money" :duration="item.duration" :unit="item.unit" :id="item.id" ref="charges" v-on:remove="onChargeRemove"></charge>
                         </div>
                         <div class="ui primary button charge-btn" @click="addStrategy">添加策略</div>
                     </div>
-                    <imguploader title="封面上传" thumb="http://w1.hoopchina.com.cn/e9/57/ab/e957ab0f18cc02cd4bf967cc402b0e09001.jpg"></imguploader>
-                    <imguploader title="U3D背景图片上传" thumb="http://w1.hoopchina.com.cn/e9/57/ab/e957ab0f18cc02cd4bf967cc402b0e09001.jpg"></imguploader>     
+                    <imguploader ref="thumbcom" title="封面上传" thumb="http://w1.hoopchina.com.cn/e9/57/ab/e957ab0f18cc02cd4bf967cc402b0e09001.jpg"></imguploader>
+                    <imguploader ref="u3dcom" title="U3D背景图片上传" thumb="http://w1.hoopchina.com.cn/e9/57/ab/e957ab0f18cc02cd4bf967cc402b0e09001.jpg"></imguploader>     
                     <div class="ui primary submit button" v-on:click="submit">提交</div>
-                    <div class="ui reset button">重置</div>
                 </form>
             </div>
         </div>

@@ -1,5 +1,5 @@
 Vue.component('charge',{
-    template : '<div class="inline">\
+    template : '<div class="inline" :cid="id">\
                     <input type="number" class="charge-input-money" v-model="m"/>\
                         <span class="charge-span">元</span>\
                         <input type="number" class="charge-input-duration" v-model="d"/>\
@@ -21,6 +21,7 @@ Vue.component('charge',{
     methods : {
         remove : function() {
             this.$el.remove();
+            this.$emit('remove',{id : this.id});
             this.$destroy();
         }
     }
