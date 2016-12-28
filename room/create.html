@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./create.css">    
 </head>
 <body>
-    <div class="page">
+    <div class="page" id="page">
         <div class="ui middle aligned center aligned grid">
             <div class="wrap">
                 <h1 class="ui header aligned">创建房间</h1>
@@ -16,37 +16,37 @@
                     <div class="two fields">
                         <div class="field">
                             <label>房间名称</label>
-                            <input placeholder="房间名称" name="name" type="text"></div>
+                            <input placeholder="房间名称" name="name" type="text" v-model="name"></div>
                         <div class="field">
                             <label>房间权重</label>
-                            <input type="number" value="1"/>    
+                            <input type="number" v-model="order"/>    
                         </div>
                     </div>
                     <div class="fields two">
                         <div class="field">
                             <label>标签</label>
-                            <input placeholder="标签" type="text"/>
+                            <input placeholder="标签" type="text" v-model="tag"/>
                         </div>
                         <div class="field">
                             <label>房间关联用户（用于推流）</label>
-                            <input placeholder="标签" type="number" value="1"/>
+                            <input placeholder="标签" type="number" v-model="userNum"/>
                         </div>                        
                     </div>                    
                     <div class="field">
                         <label>房间简介</label>
-                        <input placeholder="简介" name="username" type="text"/>    
+                        <input placeholder="简介" name="username" type="text" v-model="desc"/>    
                     </div>
                     <div class="fields three">
                         <div class="field">
                             <label>独立收费</label>
-                            <select name="" id="">
+                            <select name="" id="" v-model="dependencyCharge">
                                 <option value="0">否</option>
                                 <option value="1">是</option>
                             </select>
                         </div>
                         <div class="field">
                             <label>所属频道</label>
-                            <select name="" id="">
+                            <select name="" id="" v-model="channelId">
                                 <option value="1">网红</option>
                                 <option value="2">世界</option>
                                 <option value="3">百家</option>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="field">
                             <label>人气系数</label>
-                            <input type="number" value="1"/>    
+                            <input type="number" v-model="onlineRatio"/>    
                         </div>
                     </div>
                     <div class="field">
@@ -91,12 +91,12 @@
                     </div>
                     <div class="field">
                         <label>封面上传</label>
-                        <img class="ui small image" src="./image.png">    
+                        <img class="ui small image"  v-bind:src="thumb">    
                         <div class="ui primary button upload-btn">上传图片</div>
                     </div>
                     <div class="field">
                         <label>U3D背景图片上传</label>
-                        <img class="ui small image" src="./image.png">    
+                        <img class="ui small image"  v-bind:src="u3dbg">    
                         <div class="ui primary button upload-btn">上传图片</div>
                     </div>                    
                     <div class="ui primary submit button">提交</div>
@@ -126,6 +126,9 @@
     </div>
 <script src="../lib/jquery.min.js"></script>
 <script src="../lib/semantic.min.js"></script> 
+<script src="../lib/vue.js"></script> 
+<script src="../lib/vue-resource.js"></script> 
+<script src="./create.js"></script>
 <script>
     $('.submit').on('click', function() {
         $('.ui.modal')

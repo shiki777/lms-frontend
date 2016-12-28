@@ -1,9 +1,9 @@
 .page {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 h1 {
-    margin-bottom: 10px !important;
+    margin-bottom: 5px !important;
 }
 
 .wrap {
@@ -12,6 +12,7 @@ h1 {
 
 .room-container {
     width: 700px;
+    margin-top: 3px !important;
 }
 
 .ui.button.upload-btn {
