@@ -14,7 +14,14 @@ var vm = new Vue({
         chargeStrategy  : '',
         onlineRatio : 1,
         channelId : 1
+    },
+    methods : {
+        submit : function(e) {
+            $('.ui.modal')
+            .modal('show');            
+            return false;
+        }
     }
-})
+});
 
 })()
