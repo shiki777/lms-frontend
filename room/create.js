@@ -27,6 +27,11 @@ var vm = new Vue({
         onlineRatio : 1,
         channelId : 1
     },
+    computed : {
+        changeShow : function() {
+            return parseInt(this.dependencyCharge,10) ? 'block' : 'none';
+        }
+    },
     methods : {
         addStrategy : function() {
             this.chargeStrategy.push({

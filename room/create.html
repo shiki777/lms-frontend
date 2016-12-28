@@ -57,7 +57,7 @@
                             <input type="number" v-model="onlineRatio"/>    
                         </div>
                     </div>
-                    <div class="field">
+                    <div class="field" :style="{display : changeShow}">
                         <label>收费策略</label>
                         <div class="charge-wrap">
                             <charge v-for="item in chargeStrategy" :money="item.money" :duration="item.duration" :unit="item.unit" :id="item.id" ref="charges"></charge>
