@@ -8,7 +8,7 @@ Vue.component('charge',{
                             <option value="mouth">月</option>\
                             <option value="year">年</option>\
                         </select>\
-                        <div class="negative ui button delete-btn"> <i class="minus icon delete-icon"></i>删除</div>\
+                        <div class="negative ui button delete-btn" v-on:click="remove"> <i class="minus icon delete-icon"></i>删除</div>\
                 </div>',
     props : ['money','duration','unit'],
     data : function() {
@@ -19,9 +19,9 @@ Vue.component('charge',{
         }
     },
     methods : {
-        isSelect : function(u) {
-            console.log(u)
-            return this.u == u ? 'selected' : '';
+        remove : function() {
+            this.$el.remove();
+            this.$destroy();
         }
     }
 });

@@ -11,7 +11,15 @@ var vm = new Vue({
         thumb : './image.png',
         u3dbg : './image.png',
         dependencyCharge : 0,
-        chargeStrategy  : '',
+        chargeStrategy  : [{
+            money : 100,
+            duration : 20,
+            unit : 'day'
+        },{
+            money : 300,
+            duration : 3,
+            unit : 'year'
+        }],
         onlineRatio : 1,
         channelId : 1
     },

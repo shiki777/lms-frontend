@@ -60,8 +60,7 @@
                     <div class="field">
                         <label>收费策略</label>
                         <div class="charge-wrap">
-                            <charge money="100" duration="20" unit="day"></charge>
-                            <charge money="300" duration="3" unit="mouth"></charge>
+                            <charge v-for="item in chargeStrategy" v-bind:money="item.money" v-bind:duration="item.duration" v-bind:unit="item.unit"></charge>
                         </div>
                         <div class="ui primary button charge-btn">添加策略</div>
                     </div>
