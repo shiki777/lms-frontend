@@ -47,7 +47,7 @@ var vm = new Vue({
         },
         submit : function(e) {
             console.log(this.formatData())
-            // return;
+            return;
             $('.ui.modal')
             .modal('show');            
             return false;
@@ -71,7 +71,9 @@ var vm = new Vue({
             return res;
         },
         getChargeStrategy : function() {
-            if(parseInt(this.dependencyCharge,10))
+            if(parseInt(this.dependencyCharge,10) == 0){
+                return '';
+            }
             var arr = [];
             this.$refs.charges.map(function(charge) {
                 if(charge.del == true) return;
