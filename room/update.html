@@ -86,7 +86,40 @@
                         <p v-for="user in users">用户名：{{user.name}}</p>
                     </div>
                     <imguploader ref="thumbcom" title="封面上传" :thumb="thumb"></imguploader>
-                    <imguploader ref="u3dcom" title="U3D背景图片上传" :thumb="u3dbg"></imguploader>     
+                    <imguploader ref="u3dcom" title="U3D背景图片上传" :thumb="u3dbg"></imguploader>  
+                    <div class="fields four">
+                        <div class="field">
+                            <label>视频视角</label>
+                            <input type="number" v-model="viewAngle" min="60" max="130" @blur="onAngelBlur"/>    
+                        </div>      
+                        <div class="field">
+                            <label>控制模式</label>
+                            <select v-model="controlModel">
+                                <option value="0">陀螺仪</option>
+                                <option value="1">触摸</option>
+                                <option value="2">陀螺仪+触摸</option>
+                            </select>
+                        </div>    
+                        <div class="field">
+                            <label>投影方式</label>
+                            <select v-model="projectStyle">
+                                <option value="0">360-3D-Left-Right</option>
+                                <option value="1">360-3D-Up-Down</option>
+                                <option value="2">360-2D</option>
+                                <option value="3">180-3D-Left-Right</option>
+                                <option value="4">180-3D-Up-Down</option>
+                                <option value="5">180-2D</option>
+                                <option value="6">2D</option>
+                            </select>
+                        </div>    
+                        <div class="field">
+                            <label>单双目</label>
+                            <select v-model="eyeStyle">
+                                <option value="0">单目</option>
+                                <option value="1">双目</option>
+                            </select>
+                        </div>                                                                                           
+                    </div>                         
                     <div class="ui primary submit button" v-on:click="submit">提交</div>
                 </form>
             </div>

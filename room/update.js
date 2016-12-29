@@ -49,7 +49,11 @@ function formatRoomData(data) {
         channelId : data.channelId,
         living : data.living,
         deleteRoom : 0,
-        closeLiving : 0
+        closeLiving : 0,
+        viewAngle : data.viewAngle,
+        controlModel : data.controlModel + '',
+        projectStyle : data.projectStyle + '',
+        eyeStyle : data.eyeStyle + ''
     }
 }
 
@@ -102,7 +106,11 @@ var vm = new Vue({
                 chargeStrategy : this.getChargeStrategy(),
                 u3dbg : this.getU3dBg(),
                 tag : this.tag,
-                deleteRoom : parseInt(this.deleteRoom,10) ? true : false
+                deleteRoom : parseInt(this.deleteRoom,10) ? true : false,
+                viewAngle : this.viewAngle,
+                controlModel : parseInt(this.controlModel,10),
+                projectStyle : parseInt(this.projectStyle,10),
+                eyeStyle : parseInt(this.eyeStyle,10)                
             };
             return res;
         },
@@ -136,6 +144,15 @@ var vm = new Vue({
         getChannelId : function() {
             return this.$refs.channel.rc;
         },
+        onAngelBlur : function(e) {
+            var num = e.target.value;
+            if(num < 60){
+                e.target.value = 60;
+            }
+            if(num > 130){
+                e.target.value = 130;
+            }
+        },        
         removeStrategy : function(id) {
             /*组件调用destroy后 refs没有同步减少，所以这么做，vue刚使用不熟悉*/
             this.$refs.charges.map(function(charge) {
