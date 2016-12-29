@@ -46,11 +46,7 @@
                         </div>
                         <div class="field">
                             <label>所属频道</label>
-                            <select name="" id="" v-model="channelId">
-                                <option value="1">网红</option>
-                                <option value="2">世界</option>
-                                <option value="3">百家</option>
-                            </select>
+                            <channelselect :roomchannel="channelId"></channelselect>
                         </div>
                         <div class="field">
                             <label>人气系数</label>
@@ -96,6 +92,7 @@
 <script src="../lib/vue-resource.js"></script> 
 <script src="../component/imguploader.js"></script> 
 <script src="./charge_component.js"></script> 
+<script src="./channel_component.js"></script> 
 <script src="./create.js"></script> 
 </body>
 </html>

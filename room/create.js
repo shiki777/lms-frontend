@@ -25,7 +25,7 @@ var vm = new Vue({
             id : getId()
         }],
         onlineRatio : 1,
-        channelId : 1
+        channelId : 12
     },
     computed : {
         changeShow : function() {
