@@ -8,7 +8,7 @@ var vm = new Vue({
         name : '',
         order : 1,
         tag : '',
-        userNum : 1,
+        // userNum : 1,
         price : 100,
         desc : '',
         thumb : '',
@@ -60,8 +60,9 @@ var vm = new Vue({
                 order : this.order,
                 chargeStrategy : this.getChargeStrategy(),
                 u3dbg : this.getU3dBg(),
-                userNum : this.userNum,
-                tag : this.tag
+                // userNum : this.userNum,
+                tag : this.tag,
+                userid : this.getUserIds()
             };
             return res;
         },
@@ -94,6 +95,9 @@ var vm = new Vue({
         },
         getChannelId : function() {
             return this.$refs.channel.rc;
+        },
+        getUserIds : function() {
+            return this.$refs.userlist.userids;
         },
         removeStrategy : function(id) {
             /*组件调用destroy后 refs没有同步减少，所以这么做，vue刚使用不熟悉*/

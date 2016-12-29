@@ -30,11 +30,7 @@
                         <div class="field">
                             <label>房间关联用户（用于推流，按住ctrl多选）</label>
                             <!-- <input placeholder="标签" type="number" v-model="userNum"/> -->
-                            <select multiple="multiple">
-                                <option value="">snail001</option>
-                                <option value="">snail002</option>
-                                <option value="">snail003</option>
-                            </select>
+                            <userselect ref="userlist"></userselect>
                         </div>                        
                     </div>                    
                     <div class="field">
@@ -101,6 +97,7 @@
 <script src="../component/imguploader.js"></script> 
 <script src="./charge_component.js"></script> 
 <script src="./channel_component.js"></script> 
+<script src="./userlist_component.js"></script> 
 <script src="./create.js"></script> 
 </body>
 </html>
