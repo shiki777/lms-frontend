@@ -14,7 +14,6 @@ Vue.component('channelselect', {
             .then(function(data) {
                 if(data.body.code == 0){
                     self.channels = self.formatChannels(data.body.data);
-                    console.log(self.channels)
                 } else {
                     alert('频道列表读取失败！');
                     console.log(data.body.msg);

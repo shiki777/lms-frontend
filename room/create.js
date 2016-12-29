@@ -55,7 +55,7 @@ var vm = new Vue({
         formatData : function() {
             var res = {
                 name : this.name,
-                channelId : this.channelId,
+                channelId : this.getChannelId(),
                 living: false,
                 onlineRatio : this.onlineRatio,
                 thumb : this.getThumb(),
@@ -90,6 +90,9 @@ var vm = new Vue({
         },
         getU3dBg : function() {
             return this.$refs.u3dcom.imgurl;
+        },
+        getChannelId : function() {
+            return this.$refs.channel.rc;
         },
         removeStrategy : function(id) {
             /*组件调用destroy后 refs没有同步减少，所以这么做，vue刚使用不熟悉*/
