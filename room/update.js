@@ -1,34 +1,71 @@
 (function() {
 
 var id = 1;
+var roomid = window.location.search.match(/id=(.*)/);
+loadRoomInfo(roomid);
 
+function getId() {
+    return id++;
+}
+
+function loadRoomInfo(id) {
+    var url = 'http://127.0.0.1:5000/room';
+    Vue.http.jsonp(url,{params : {id : id}})
+    .then(function(data) {
+        if(data.body.code == 0){
+            var vmdata = formatRoomData(data.body.data);
+            createVm(vmdata);
+        } else {
+            alert('房间信息加载失败，请重试!');
+            console.log(data.body.msg);
+        }
+
+    })
+}
+
+function formatRoomData(data) {
+    var discount = [];
+    if(data.chargeStrategy.discount.length >0){
+        data.chargeStrategy.discount.map(function(item) {
+            discount.push({
+                discount : item.discount,
+                duration : item.mouth,
+                id : getId()
+            })
+        })
+    }
+    return {
+        name : data.name,
+        order : data.order,
+        tag : data.tag,
+        users : data.users,
+        price : data.chargeStrategy.price,
+        desc : data.desc,
+        thumb : data.thumb,
+        u3dbg : data.u3dbg,
+        dependencyCharge : data.dependencyCharge ? 1 : 0,
+        chargeStrategy  : discount,
+        onlineRatio : data.onlineRatio,
+        channelId : data.channelId,
+        living : data.living,
+        deleteRoom : 0,
+        closeLiving : 0
+    }
+}
+
+function createVm(data) {
 var vm = new Vue({
     el : '#page',
-    data : {
-        name : 'AAA',
-        order : 2,
-        tag : '',
-        userNum : 2,
-        price : 10,
-        desc : '',
-        thumb : './image.png',
-        u3dbg : './image.png',
-        dependencyCharge : 1,
-        chargeStrategy  : [{
-            discount : 0.9,
-            duration : 3,
-            id : getId()
-        },{
-            discount : 0.8,
-            duration : 12,
-            id : getId()
-        }],
-        onlineRatio : 1,
-        channelId : 12
-    },
+    data : data,
     computed : {
         changeShow : function() {
             return parseInt(this.dependencyCharge,10) ? 'block' : 'none';
+        },
+        closeLivingShow : function() {
+            return this.living ? 'block' : 'none';
+        },
+        roomStatus : function() {
+            return this.living ? '正在直播' : '未直播';
         }
     },
     methods : {
@@ -55,7 +92,7 @@ var vm = new Vue({
             var res = {
                 name : this.name,
                 channelId : this.getChannelId(),
-                living: false,
+                living: this.living ? (parseInt(this.closeLiving,10) ? false : true) : false, //直播时候通过关闭直播间选项来判断，未播时为false
                 onlineRatio : this.onlineRatio,
                 thumb : this.getThumb(),
                 desc : this.desc,
@@ -64,8 +101,8 @@ var vm = new Vue({
                 order : this.order,
                 chargeStrategy : this.getChargeStrategy(),
                 u3dbg : this.getU3dBg(),
-                userNum : this.userNum,
-                tag : this.tag
+                tag : this.tag,
+                deleteRoom : parseInt(this.deleteRoom,10) ? true : false
             };
             return res;
         },
@@ -109,10 +146,8 @@ var vm = new Vue({
         }
 
     }
-});
-
-function getId() {
-    return id++;
+});    
 }
+
 
 })()

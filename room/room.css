@@ -75,3 +75,7 @@ h1 {
 .price-line .charge-input-money {
     vertical-align: middle !important;
 }
+
+.live-status {
+    font-size: 20px;
+}

@@ -26,12 +26,28 @@
                         <div class="field">
                             <label>标签</label>
                             <input placeholder="标签" type="text" v-model="tag"/>
-                        </div>
+                        </div> 
                         <div class="field">
-                            <label>房间关联用户（用于推流）</label>
-                            <input placeholder="标签" type="number" v-model="userNum"/>
-                        </div>                        
-                    </div>                    
+                            <label>删除直播房间</label>
+                            <select v-model="deleteRoom">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>                      
+                    </div>     
+                    <div class="fields two">
+                        <div class="field">
+                            <label>直播状态</label>
+                            <div class="inline live-status">{{ roomStatus }}</div>
+                        </div>
+                        <div class="field" :style="{display: closeLivingShow}">
+                            <label>关闭直播</label>
+                            <select v-model="closeLiving">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>               
                     <div class="field">
                         <label>房间简介</label>
                         <input placeholder="简介" name="username" type="text" v-model="desc"/>    
@@ -65,8 +81,8 @@
                         </div>
                         <div class="ui primary button charge-btn" @click="addStrategy">添加策略</div>
                     </div>
-                    <imguploader ref="thumbcom" title="封面上传" thumb="http://w1.hoopchina.com.cn/e9/57/ab/e957ab0f18cc02cd4bf967cc402b0e09001.jpg"></imguploader>
-                    <imguploader ref="u3dcom" title="U3D背景图片上传" thumb="http://w1.hoopchina.com.cn/e9/57/ab/e957ab0f18cc02cd4bf967cc402b0e09001.jpg"></imguploader>     
+                    <imguploader ref="thumbcom" title="封面上传" :thumb="thumb"></imguploader>
+                    <imguploader ref="u3dcom" title="U3D背景图片上传" :thumb="u3dbg"></imguploader>     
                     <div class="ui primary submit button" v-on:click="submit">提交</div>
                 </form>
             </div>
@@ -76,12 +92,8 @@
         <div class="header">恭喜您</div>
         <div class="image content">
             <div class="description">
-                <div class="ui header">房间创建成功！</div>
-                <p>
-                    该房间关联用户的用户名是: snaligame001
-                </p>
-                <p>密码是 fegre1</p>
-                <p>请妥善保管！</p>
+                <div class="ui header">房间修改成功！</div>
+                <p>接下来会刷新页面</p>
             </div>
         </div>
         <div class="actions">
