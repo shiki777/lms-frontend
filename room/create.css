@@ -67,3 +67,11 @@ h1 {
     right: 3px;
     color: #fff;
 }
+
+.price-line {
+    margin-bottom: 10px;
+}
+
+.price-line .charge-input-money {
+    vertical-align: middle !important;
+}

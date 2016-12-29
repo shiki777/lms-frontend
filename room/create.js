@@ -9,19 +9,18 @@ var vm = new Vue({
         order : 2,
         tag : '',
         userNum : 2,
+        price : 10,
         desc : '',
         thumb : './image.png',
         u3dbg : './image.png',
         dependencyCharge : 1,
         chargeStrategy  : [{
-            money : 100,
-            duration : 20,
-            unit : 'day',
+            discount : 0.9,
+            duration : 3,
             id : getId()
         },{
-            money : 300,
-            duration : 3,
-            unit : 'mouth',
+            discount : 0.8,
+            duration : 12,
             id : getId()
         }],
         onlineRatio : 1,
@@ -72,18 +71,24 @@ var vm = new Vue({
         },
         getChargeStrategy : function() {
             if(parseInt(this.dependencyCharge,10) == 0){
-                return '';
+                return {
+                    price : 0,
+                    discount : []
+                };
             }
-            var arr = [];
+            var res = {
+                price : this.price,
+            }
+            discount = [];
             this.$refs.charges.map(function(charge) {
                 if(charge.del == true) return;
-                var money = charge.m;
-                var duration = charge.d;
-                var unit = charge.u;
-                var tmpstr = duration + unit.substr(0,1) + money;
-                arr.push(tmpstr);
-            })            
-            return arr.join('-');
+                discount.push({
+                    mouth : charge.d,
+                    discount : parseFloat(charge.m,10)
+                });
+            })     
+            res.discount = discount;       
+            return res;
         },
         getThumb : function() {
             return this.$refs.thumbcom.imgurl;

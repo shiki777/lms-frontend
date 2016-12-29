@@ -54,9 +54,14 @@
                         </div>
                     </div>
                     <div class="field" :style="{display : changeShow}">
-                        <label>收费策略</label>
+                        <label>基础定价</label>
+                        <div class="inline price-line">
+                            <input type="number" class="charge-input-money" v-model="price">                        
+                            <span class="charge-span">元/月</span>
+                        </div>
+                        <label>折扣策略</label>
                         <div class="charge-wrap">
-                            <charge v-for="item in chargeStrategy" :money="item.money" :duration="item.duration" :unit="item.unit" :id="item.id" ref="charges" v-on:remove="onChargeRemove"></charge>
+                            <charge v-for="item in chargeStrategy" :discount="item.discount" :duration="item.duration" :id="item.id" ref="charges" v-on:remove="onChargeRemove"></charge>
                         </div>
                         <div class="ui primary button charge-btn" @click="addStrategy">添加策略</div>
                     </div>

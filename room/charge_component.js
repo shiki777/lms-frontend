@@ -1,21 +1,17 @@
 Vue.component('charge',{
     template : '<div class="inline" :cid="id">\
-                    <input type="number" class="charge-input-money" v-model="m"/>\
-                        <span class="charge-span">元</span>\
-                        <input type="number" class="charge-input-duration" v-model="d"/>\
-                        <select class="charge-input" v-model="u">\
-                            <option value="day">天</option>\
-                            <option value="mouth">月</option>\
-                            <option value="year">年</option>\
-                        </select>\
+                    <span class="charge-span">购买</span>\
+                    <input type="number" class="charge-input-duration" v-model="d"/>\
+                    <span class="charge-span">个月打</span>\
+                    <input class="charge-input-money" v-model="m"/>\
+                        <span class="charge-span">折</span>\
                         <div class="negative ui button delete-btn" v-on:click="remove"> <i class="minus icon delete-icon"></i>删除</div>\
                 </div>',
-    props : ['money','duration','unit', 'id'],
+    props : ['discount','duration', 'id'],
     data : function() {
         return {
-            m : this.money || 30,
-            d : this.duration || 20,
-            u : this.unit || 'day'
+            m : this.discount || 0.8,
+            d : this.duration || 3
         }
     },
     methods : {
