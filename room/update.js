@@ -5,22 +5,26 @@ var id = 1;
 var vm = new Vue({
     el : '#page',
     data : {
-        name : '',
-        order : 1,
+        name : 'AAA',
+        order : 2,
         tag : '',
-        userNum : 1,
-        price : 100,
+        userNum : 2,
+        price : 10,
         desc : '',
-        thumb : '',
-        u3dbg : '',
-        dependencyCharge : 0,
+        thumb : './image.png',
+        u3dbg : './image.png',
+        dependencyCharge : 1,
         chargeStrategy  : [{
             discount : 0.9,
             duration : 3,
             id : getId()
+        },{
+            discount : 0.8,
+            duration : 12,
+            id : getId()
         }],
         onlineRatio : 1,
-        channelId : 0
+        channelId : 12
     },
     computed : {
         changeShow : function() {
