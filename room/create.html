@@ -28,8 +28,13 @@
                             <input placeholder="标签" type="text" v-model="tag"/>
                         </div>
                         <div class="field">
-                            <label>房间关联用户（用于推流）</label>
-                            <input placeholder="标签" type="number" v-model="userNum"/>
+                            <label>房间关联用户（用于推流，按住ctrl多选）</label>
+                            <!-- <input placeholder="标签" type="number" v-model="userNum"/> -->
+                            <select multiple="multiple">
+                                <option value="">snail001</option>
+                                <option value="">snail002</option>
+                                <option value="">snail003</option>
+                            </select>
                         </div>                        
                     </div>                    
                     <div class="field">
