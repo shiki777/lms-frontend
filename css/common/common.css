@@ -6,3 +6,7 @@
 .page {
     position: relative;
 }
+
+.clear {
+    clear: both;
+}
