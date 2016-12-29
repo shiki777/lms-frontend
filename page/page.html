@@ -2,18 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>page component demo</title>
+    <link rel="stylesheet" href="../css/common/paganation.css">
+    <style>
+        .page-wrap {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <div id="page">
-        <pagination url="http://lms.st.com/channel/list"></pagination>
+<div id="page">
+    <div class="page-wrap">
+        <pagination url="http://lms.st.com/channel/list" size="12" @dataloaded="pageLoaded"></pagination>
     </div>
+</div> 
     <script src="../lib/vue.js"></script>
     <script src="../lib/vue-resource.js"></script>
     <script src="./page.js"></script>
     <script>
         new Vue({
-            el : '#page'
+            el : '#page',
+            methods : {
+                pageLoaded : function(data) {
+                    console.log(data)
+                }
+            }
         })
     </script>
 </body>
