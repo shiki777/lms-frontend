@@ -1,8 +1,8 @@
 (function() {
 
 var id = 1;
-var roomid = window.location.search.match(/id=(.*)/);
-loadRoomInfo(roomid);
+var channelid = window.location.search.match(/id=(.*)/);
+loadRoomInfo(channelid);
 
 function getId() {
     return id++;
@@ -42,7 +42,9 @@ function formatRoomData(data) {
         tag : data.tag,
         thumb : data.thumb,
         dependencyCharge : data.dependencyCharge ? 1 : 0,
-        chargeStrategy  : discount
+        chargeStrategy  : discount,
+        channelid : channelid,
+        defaultRoom : data.defaultRoom || 0
     }
 }
 
@@ -93,7 +95,8 @@ var vm = new Vue({
                 desc : this.desc,
                 charge : parseInt(this.dependencyCharge,10) ? true : false,
                 order : this.order,
-                chargeStrategy : this.getChargeStrategy()
+                chargeStrategy : this.getChargeStrategy(),
+                defaultRoom : this.getDefaultRoom()
             };
             return res;
         },
@@ -120,6 +123,9 @@ var vm = new Vue({
         },
         getThumb : function() {
             return this.$refs.thumbcom.imgurl;
+        },
+        getDefaultRoom : function() {
+            return this.$refs.defaultroom.room;
         },
         removeStrategy : function(id) {
             /*组件调用destroy后 refs没有同步减少，所以这么做，vue刚使用不熟悉*/

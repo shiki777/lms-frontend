@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>创建频道</title>
+    <title>更新频道</title>
     <link rel="stylesheet" href="../lib/css/semantic.min.css">
     <link rel="stylesheet" href="../css/common/common.css">
     <link rel="stylesheet" href="./channel.css">     
@@ -38,6 +38,10 @@
                     <div class="field">
                         <label>频道简介</label>
                         <input placeholder="简介" name="username" type="text" v-model="desc"/>    
+                    </div>
+                    <div class="field">
+                        <label>默认房间选取</label>
+                        <roomselect ref="defaultroom" :cid="channelid" :roomid="defaultRoom"></roomselect>
                     </div>
                     <div class="field" :style="{display : changeShow}">
                         <label>基础定价</label>
@@ -80,6 +84,7 @@
 <script src="../lib/vue-resource.js"></script> 
 <script src="../component/imguploader.js"></script> 
 <script src="../room/charge_component.js"></script> 
+<script src="./roomlist_component.js"></script> 
 <script src="./update.js"></script>     
 </body>
 </html>
