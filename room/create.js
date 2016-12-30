@@ -45,10 +45,21 @@ var vm = new Vue({
             this.removeStrategy(e.id);
         },
         submit : function(e) {
-            console.log(this.formatData())
-            return;
-            $('.ui.modal')
-            .modal('show');            
+            var url = 'http://127.0.0.1:5000/room/add';
+            var self = this;
+            Vue.http.post(url,{body : this.formatData()})
+            .then(function(data) {
+                if(data.body.code == 0){
+                    $('.ui.modal')
+                    .modal('show'); 
+                    // location.href= '';
+                } else {
+                    alert('提交失败：' + data.body.msg);
+                }
+
+            }, function(e) {
+                alert('提交失败');
+            })           
             return false;
         },
         formatData : function() {
