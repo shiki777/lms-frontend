@@ -11,9 +11,9 @@ Vue.component('pagination', {
     methods : {
         load: function() {
             var self = this;
-            var url = 'http://127.0.0.1:5000/page';
+            var url = this.url;
             Vue.http.jsonp(url, {
-                    params: {page : this.currentPage,pageSize : this.pageSize}
+                    params: {page : this.currentPage - 1,pageSize : this.pageSize}
                 })
                 .then(this.onDataLoaded, this.onLoadFail);
         },
@@ -27,8 +27,7 @@ Vue.component('pagination', {
         },
         onDataLoaded: function(data) {
             if (data.body.code == 0) {
-                this.page = Math.ceil(parseInt(data.body.data.count / this.pageSize));
-                console.log(data.body.data.list)
+                this.page = Math.ceil(data.body.data.count / this.pageSize);
                 this.$emit('dataloaded',{data : data.body.data.list});
             } else {
                 alert('频道列表读取失败！');
