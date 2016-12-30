@@ -11,7 +11,7 @@
     <div class="page" id="page">
         <div class="ui middle aligned center aligned grid">
             <div class="wrap">
-                <h1 class="ui header aligned">创建频道</h1>
+                <h1 class="ui header aligned">更新频道</h1>
                 <form class="ui form segment room-container">
                     <div class="two fields">
                         <div class="field">
@@ -52,7 +52,8 @@
                         <div class="ui primary button charge-btn" @click="addStrategy">添加策略</div>
                     </div>
                     <div class="field">
-                    <imguploader ref="thumbcom" title="封面上传" thumb="http://epg.readyvr.woniucloud.com/mz/cache/snailTV/pagefile/b54a2cbbca38c793e01c63febcef6da7.jpg"></imguploader>
+                        <imguploader ref="thumbcom" title="封面上传" thumb="http://epg.readyvr.woniucloud.com/mz/cache/snailTV/pagefile/b54a2cbbca38c793e01c63febcef6da7.jpg"></imguploader>
+                    </div>
                     <div class="ui primary submit button" v-on:click="submit">提交</div>
                 </form>
             </div>
