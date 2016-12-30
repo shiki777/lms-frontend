@@ -7,10 +7,10 @@ var vm = new Vue({
     data : {
         name : '',
         order : 1,
-        tag : '',
         price : 100,
         desc : '',
         thumb : '',
+        icon : '',
         dependencyCharge : 1,
         chargeStrategy  : [{
             discount : 0.9,
@@ -62,6 +62,7 @@ var vm = new Vue({
                 desc : this.desc,
                 charge : parseInt(this.dependencyCharge,10) ? true : false,
                 order : this.order,
+                icon : this.getIcon(),
                 chargeStrategy : this.getChargeStrategy()
             };
             return res;
@@ -89,6 +90,9 @@ var vm = new Vue({
         },
         getThumb : function() {
             return this.$refs.thumbcom.imgurl;
+        },
+        getIcon : function() {
+            return this.$refs.iconcom.imgurl;
         },
         removeStrategy : function(id) {
             /*组件调用destroy后 refs没有同步减少，所以这么做，vue刚使用不熟悉*/

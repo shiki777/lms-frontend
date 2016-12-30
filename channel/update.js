@@ -39,9 +39,9 @@ function formatRoomData(data) {
         order : data.order,
         price : data.chargeStrategy.price,
         desc : data.desc,
-        tag : data.tag,
         thumb : data.thumb,
-        dependencyCharge : data.dependencyCharge ? 1 : 0,
+        icon : data.icon,
+        dependencyCharge : data.charge ? 1 : 0,
         chargeStrategy  : discount,
         channelid : channelid,
         defaultRoom : data.defaultRoom || 0
@@ -95,6 +95,7 @@ var vm = new Vue({
                 desc : this.desc,
                 charge : parseInt(this.dependencyCharge,10) ? true : false,
                 order : this.order,
+                icon : this.getIcon(),
                 chargeStrategy : this.getChargeStrategy(),
                 defaultRoom : this.getDefaultRoom()
             };
@@ -123,6 +124,9 @@ var vm = new Vue({
         },
         getThumb : function() {
             return this.$refs.thumbcom.imgurl;
+        },
+        getIcon : function() {
+            return this.$refs.iconcom.imgurl;
         },
         getDefaultRoom : function() {
             return this.$refs.defaultroom.room;

@@ -22,11 +22,7 @@
                             <input type="number" v-model="order"/>    
                         </div>
                     </div>
-                    <div class="fields two">
-                        <div class="field">
-                            <label>标签</label>
-                            <input placeholder="标签" type="text" v-model="tag"/>
-                        </div>  
+                    <div class="fields two"> 
                         <div class="field">
                             <label>收费</label>
                             <select v-model="dependencyCharge">
@@ -54,6 +50,9 @@
                     <div class="field">
                         <imguploader ref="thumbcom" title="封面上传" thumb="http://epg.readyvr.woniucloud.com/mz/cache/snailTV/pagefile/b54a2cbbca38c793e01c63febcef6da7.jpg"></imguploader>
                     </div>
+                    <div class="field">
+                        <imguploader ref="iconcom" title="角标上传" thumb="http://epg.readyvr.woniucloud.com/mz/cache/snailTV/pagefile/b54a2cbbca38c793e01c63febcef6da7.jpg"></imguploader>
+                    </div>                    
                     <div class="ui primary submit button" v-on:click="submit">提交</div>
                 </form>
             </div>
