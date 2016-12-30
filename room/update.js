@@ -1,7 +1,7 @@
 (function() {
 
 var id = 1;
-var roomid = window.location.search.match(/id=(.*)/);
+var roomid = parseInt(window.location.search.match(/id=(.*)/));
 loadRoomInfo(roomid);
 
 function getId() {
@@ -88,7 +88,24 @@ var vm = new Vue({
         submit : function(e) {
             var url = 'http://127.0.0.1:5000/room/add';
             var self = this;
-            Vue.http.post(url,{body : this.formatData()})
+            var body = this.formatData();
+            /*是否有删除房间标记*/
+            if(body.deleteRoom){
+                Vue.http.delete(url, {params : {id : roomid}})
+                    .then(function(data) {
+                        if(data.body.code == 0){
+                            $('.ui.modal').modal('show');
+                            // location.href= '';
+                        } else {
+                            alert('提交失败：' + data.body.msg);
+                        }
+                    }, function(e) {
+                        alert('提交失败');
+                        console.log(e)
+                    })
+            }
+            /*未删除房间逻辑*/
+            Vue.http.post(url,{body : body})
             .then(function(data) {
                 if(data.body.code == 0){
                     $('.ui.modal')
@@ -100,6 +117,7 @@ var vm = new Vue({
 
             }, function(e) {
                 alert('提交失败');
+                console.log(e)
             })           
             return false;
         },
