@@ -23,7 +23,7 @@
   <div class="column">
     <h2 class="ui teal image header">
       <div class="content">
-        Ready VR 直播管理系统
+        Ready VR 直播管理系统 - 注册
       </div>
     </h2>
     <form class="ui large form">
@@ -31,15 +31,21 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="name" placeholder="用户名" id="username">
+            <input type="text" name="name" placeholder="用户名">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="密码" id="pwd">
+            <input type="password" name="password" id="pw" placeholder="密码">
           </div>
         </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password2" id="pw2" placeholder="确认密码">
+          </div>
+        </div>        
         <div class="ui fluid large teal submit button" id="loginBtn">登录</div>
       </div>
       <div class="ui error message"></div>
@@ -48,8 +54,6 @@
 </div>
 <script src="../lib/jquery.min.js"></script>
 <script src="../lib/semantic.min.js"></script>
-<script src="../lib/vue.js"></script> 
-<script src="../lib/vue-resource.js"></script> 
-<script src="./login.js"></script>
+<script src="./register.js"></script>
 </body>
 </html>
