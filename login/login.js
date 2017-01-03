@@ -37,7 +37,6 @@
             };
             Vue.http.post(url,body)
             .then(function(data) {
-              console.log(data.body.code)
                 if(data.body.code == 0){
                     // location.href= '';
                 } else {

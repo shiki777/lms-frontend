@@ -38,9 +38,9 @@ var vm = new Vue({
             this.removeStrategy(e.id);
         },
         submit : function(e) {
-            var url = 'http://127.0.0.1:5000/room/add';
+            var url = 'http://192.168.5.48:3000/lms/channel/add';
             var self = this;
-            Vue.http.post(url,{body : this.formatData()})
+            Vue.http.post(url,this.formatData())
             .then(function(data) {
                 if(data.body.code == 0){
                     $('.ui.modal')
@@ -81,7 +81,7 @@ var vm = new Vue({
             this.$refs.charges.map(function(charge) {
                 if(charge.del == true) return;
                 discount.push({
-                    mouth : charge.d,
+                    month : charge.d,
                     discount : parseFloat(charge.m,10)
                 });
             })     
