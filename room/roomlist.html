@@ -13,12 +13,13 @@
         <div class="ui middle aligned center aligned">
             <div class="wrap">   
                 <div class="room-item" v-for="room in rooms">
-                    <a href="" target="_blank">
+                    <a :href="room.link" target="_blank">
                         <img src="http://epg.readyvr.woniucloud.com/mz/cache/snailTV/pagefile/b54a2cbbca38c793e01c63febcef6da7.jpg" class="thumb">
                         <div class="room-name">{{room.name}}</div>
-                        <div class="room-status" :class="{show : room.living, unshow : room.living}">{{room.user}}  正在直播</div>
-                        <div class="room-btn" :class="{show : room.living, unshow : room.living}"><div class="negative ui button delete-btn">关闭直播</div></div>
-                        <div class="room-btn"><div class="negative ui button delete-btn">删除房间</div></div>
+                        <div class="room-status" :class="{show : room.living, unshow : !room.living}">{{room.user}}  正在直播</div>
+                        <div class="room-status" :class="{show : !room.living, unshow : room.living}">尚未开播</div>
+                        <div class="room-btn"><div :roomid="room.id" class="negative ui button delete-btn" @click="onDeleteBtnClick">删除房间</div></div>
+                        <div class="room-btn" :class="{show : room.living, unshow : !room.living}"><div :roomid="room.id" class="negative ui button delete-btn" @click="onCloseBtnClick">关闭直播</div></div>
                     </a>                    
                 </div>                                      
                 <div class="clear"></div>                               
