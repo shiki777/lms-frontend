@@ -28,18 +28,17 @@
             }
           },
           onSuccess : function() {
-            var url = 'http://192.168.5.48:3000/cms/login';
+            var url = 'http://192.168.5.48:3000/lms/login';
             var username = $('#username').val();
             var pwd = $('#pwd').val();
             var body = {
               username : username,
               pwd : pwd
             };
-            Vue.http.post(url,{body : body})
+            Vue.http.post(url,body)
             .then(function(data) {
+              console.log(data.body.code)
                 if(data.body.code == 0){
-                    $('.ui.modal')
-                    .modal('show'); 
                     // location.href= '';
                 } else {
                     alert('提交失败：' + data.body.msg);
