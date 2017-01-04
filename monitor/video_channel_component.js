@@ -1,5 +1,5 @@
 Vue.component('channel', {
-    template : '<tbody><room v-for="room in rooms" :roomid="room.id"></room></tbody>',
+    template : '<div class="channel"><room v-for="room in rooms" :roomid="room.id"></room><div>',
     props : ['channelid'],
     data : function() {
         return {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>监控页面</title>
+    <title>视频监控页面</title>
     <link rel="stylesheet" href="../lib/css/semantic.min.css">
     <!-- 后续再引入main做css合并 -->
     <link rel="stylesheet" href="../css/common/common.css">
@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="ui container" id="page">
-    <div class="ui attached icon info message">
+    <div class="ui attached icon info message" style="padding: 0">
       <i class="help circle icon"></i>
       <div class="content">
         房间监控页面
@@ -18,13 +18,17 @@
     </div>
     <monitor></monitor>
 
-  </div>  
+  </div>
+  <script>window.num = 0;</script>
+  <script src="../lib/jwplayer.js"></script>
+  <script src="../lib/jwplayer.flash.swf"></script>
+  <script>jwplayer.key="iP+vLYU9H5KyhZeGt5eVuJJIoULUjltoaMeHXg==";</script>  
 <script src="../lib/vue.js"></script> 
 <script src="../lib/vue-resource.js"></script> 
 <script src="../lib/jquery.min.js"></script> 
-<script src="./monitor_component.js"></script> 
-<script src="./channel_component.js"></script> 
-<script src="./room_component.js"></script> 
+<script src="./video_monitor_component.js"></script> 
+<script src="./video_channel_component.js"></script> 
+<script src="./video_room_component.js"></script> 
 <script src="./index.js"></script>
 </body>
 </html>
