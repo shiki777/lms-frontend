@@ -14,7 +14,7 @@
             <div class="wrap">   
                 <div class="room-item" v-for="channel in channels">
                     <a :href="channel.link" target="_blank">
-                        <img src="http://epg.readyvr.woniucloud.com/mz/cache/snailTV/pagefile/b54a2cbbca38c793e01c63febcef6da7.jpg" class="thumb">
+                        <img :src="channel.thumb" class="thumb">
                         <div class="room-name">{{channel.name}}</div>
                     </a>                    
                 </div>                                      
