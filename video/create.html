@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频添加</title>
+    <link rel="stylesheet" href="../lib/css/semantic.min.css">
+    <link rel="stylesheet" href="../css/common/common.css">
+    <link rel="stylesheet" href="./video.css">    
+</head>
+<body>
+    <div class="page" id="page">
+        <div class="ui middle aligned center aligned grid">
+            <div class="wrap">
+                <h1 class="ui header aligned">视频添加</h1>
+                <form class="ui form segment room-container">
+                    <div class="two fields">
+                        <div class="field">
+                            <label>视频名称</label>
+                            <input placeholder="视频名称" name="name" type="text" v-model="name"></div>
+                    </div>                  
+                    <div class="field">
+                        <label>视频地址</label>
+                        <input placeholder="视频地址" name="url" type="text" v-model="url"/>    
+                    </div>
+                    <imguploader ref="thumbcom" title="封面上传" thumb="http://epg.readyvr.woniucloud.com/mz/cache/snailTV/pagefile/b54a2cbbca38c793e01c63febcef6da7.jpg"></imguploader>  
+                    <div class="ui primary submit button" v-on:click="submit">提交</div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="ui modal"> <i class="close icon"></i>
+        <div class="header">恭喜您</div>
+        <div class="image content">
+            <div class="description">
+                <div class="ui header">视频创建成功！</div>
+                <p>
+                    页面将跳转到....
+                </p>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">知道了</div>
+<!--             <div class="ui positive right labeled icon button">
+                Yep, that's me <i class="checkmark icon"></i>
+            </div> -->
+        </div>
+    </div>
+<script src="../lib/jquery.min.js"></script> 
+<script src="../lib/semantic.min.js"></script>     
+<script src="../lib/vue.js"></script> 
+<script src="../lib/vue-resource.js"></script> 
+<script src="../component/imguploader.js"></script> 
+<script src="./create.js"></script> 
+</body>
+</html>
