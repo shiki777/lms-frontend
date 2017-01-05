@@ -20,7 +20,7 @@ Vue.component('imguploader',{
             this.upload(formdata);
         },
         upload : function(formdata) {
-            var url = 'http://127.0.0.1:3000/cms/upload';
+            var url = window.hosturl + '/lms/upload';
             var self = this;
             Vue.http.post(url, formdata)
                 .then(function(data) {
@@ -30,7 +30,7 @@ Vue.component('imguploader',{
                 })
         },
         getImgUrl : function(data) {
-            return 'http://127.0.0.1:3000/' + data[0].newpath;
+            return window.hosturl + '/' + data[0].newpath;
         }
     }
 

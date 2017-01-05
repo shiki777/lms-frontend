@@ -9,8 +9,8 @@ Vue.component('channelselect', {
     },
     beforeCreate : function() {
         var self = this;
-        var url = 'http://127.0.0.1:5000/c';
-        Vue.http.jsonp(url,{params : {}})
+        var url = window.hosturl + '/channel/list';
+        Vue.http.jsonp(url,{params : {page : 0,pageSize : 100}})
             .then(function(data) {
                 if(data.body.code == 0){
                     self.channels = self.formatChannels(data.body.data);

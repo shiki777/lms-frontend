@@ -4,7 +4,7 @@ var vm = new Vue({
     el : '#page',
     data : {
         channels : [],
-        url : window.hosturl + '/channel/list'
+        url : window.hosturl + '/lms/channel/list'
     },
     methods : {
         pageLoaded : function(data) {

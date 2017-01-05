@@ -29,7 +29,7 @@ var vm = new Vue({
             var id = ele.getAttribute('roomid');
             var self = this;
             if(id){
-                var url = 'http://127.0.0.1:5000/del?id=' + id;
+                var url = window.host + 'http://127.0.0.1:5000/room/list?id=' + id;
                 // Vue.http.delete(url)
                 // .then(function(data) {
                 //     if(data.body.code == 0){
