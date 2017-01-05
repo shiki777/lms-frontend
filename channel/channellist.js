@@ -3,7 +3,8 @@
 var vm = new Vue({
     el : '#page',
     data : {
-        channels : []
+        channels : [],
+        url : window.hosturl + '/channel/list'
     },
     methods : {
         pageLoaded : function(data) {

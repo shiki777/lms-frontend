@@ -21,13 +21,14 @@
                 <div class="clear"></div>                               
             </div>
             <div class="page-wrap">
-                <pagination url="http://127.0.0.1:5000/channellist" size="12" @dataloaded="pageLoaded"></pagination>
+                <pagination :url="url" size="12" @dataloaded="pageLoaded"></pagination>
             </div>
         </div>
     </div>
 
 <script src="../lib/vue.js"></script> 
 <script src="../lib/vue-resource.js"></script> 
+<script src="../common/host.js"></script> 
 <script src="../component/page.js"></script> 
 <script src="./channellist.js"></script>     
 </body>
