@@ -129,7 +129,7 @@ var vm = new Vue({
             return this.$refs.iconcom.imgurl;
         },
         getDefaultRoom : function() {
-            return this.$refs.defaultroom.room;
+            return this.$refs.defaultroom.room || null;
         },
         removeStrategy : function(id) {
             /*组件调用destroy后 refs没有同步减少，所以这么做，vue刚使用不熟悉*/
