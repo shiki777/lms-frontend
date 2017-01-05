@@ -9,7 +9,7 @@ function getId() {
 }
 
 function loadRoomInfo(id) {
-    var url = 'http://127.0.0.1:5000/room';
+    var url = window.hosturl + '/channel/get';
     Vue.http.jsonp(url,{params : {id : id}})
     .then(function(data) {
         if(data.body.code == 0){
@@ -71,9 +71,9 @@ var vm = new Vue({
             this.removeStrategy(e.id);
         },
         submit : function(e) {
-            var url = 'http://127.0.0.1:5000/room/add';
+            var url = window.hosturl + '/channel/update';
             var self = this;
-            Vue.http.post(url,{body : this.formatData()})
+            Vue.http.post(url,this.formatData(),{params : {id : id}})
             .then(function(data) {
                 if(data.body.code == 0){
                     $('.ui.modal')
