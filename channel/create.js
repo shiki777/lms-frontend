@@ -38,7 +38,7 @@ var vm = new Vue({
             this.removeStrategy(e.id);
         },
         submit : function(e) {
-            var url = 'http://192.168.5.48:3000/lms/channel/add';
+            var url = 'http://192.168.5.193:3000/lms/channel/add';
             var self = this;
             Vue.http.post(url,this.formatData())
             .then(function(data) {
