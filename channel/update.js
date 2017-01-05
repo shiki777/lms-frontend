@@ -29,7 +29,7 @@ function formatRoomData(data) {
         data.chargeStrategy.discount.map(function(item) {
             discount.push({
                 discount : item.discount,
-                duration : item.mouth,
+                duration : item.month,
                 id : getId()
             })
         })
@@ -73,7 +73,7 @@ var vm = new Vue({
         submit : function(e) {
             var url = window.hosturl + '/lms/channel/update';
             var self = this;
-            Vue.http.post(url,this.formatData(),{params : {id : id}})
+            Vue.http.post(url,this.formatData(),{params : {id : channelid}})
             .then(function(data) {
                 if(data.body.code == 0){
                     $('.ui.modal')
@@ -93,7 +93,7 @@ var vm = new Vue({
                 name : this.name,
                 thumb : this.getThumb(),
                 desc : this.desc,
-                charge : parseInt(this.dependencyCharge,10) ? true : false,
+                charge : parseInt(this.dependencyCharge,10) ? 1 : 0,
                 order : this.order,
                 icon : this.getIcon(),
                 chargeStrategy : this.getChargeStrategy(),
@@ -115,7 +115,7 @@ var vm = new Vue({
             this.$refs.charges.map(function(charge) {
                 if(charge.del == true) return;
                 discount.push({
-                    mouth : charge.d,
+                    month : charge.d,
                     discount : parseFloat(charge.m,10)
                 });
             })     
