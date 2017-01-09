@@ -34,6 +34,7 @@ function formatRoomData(data) {
             })
         })
     }
+    console.log(discount)
     return {
         name : data.name,
         order : data.order,
@@ -78,7 +79,9 @@ var vm = new Vue({
                 if(data.body.code == 0){
                     $('.ui.modal')
                     .modal('show'); 
-                    // location.href= '';
+                    window.setTimeout(function() {
+                         window.location.reload();
+                    }, 1500);
                 } else {
                     alert('提交失败：' + data.body.msg);
                 }
