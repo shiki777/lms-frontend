@@ -1,16 +1,16 @@
 (function() {
 
 var id = 1;
-var roomid = window.location.search.match(/id=(.*)/) ? window.location.search.match(/id=(.*)/)[1] : 0;
-loadRoomInfo(roomid);
+var channelid = window.location.search.match(/id=(.*)/) ? window.location.search.match(/id=(.*)/)[1] : 0;
+loadRoomInfo(channelid);
 
 function getId() {
     return id++;
 }
 
 function loadRoomInfo(id) {
-    var url = window.hosturl + '/lms/room/get';
-    Vue.http.jsonp(url,{params : {id : roomid}})
+    var url = window.hosturl + '/lms/channel/get';
+    Vue.http.jsonp(url,{params : {id : id}})
     .then(function(data) {
         if(data.body.code == 0){
             var vmdata = formatRoomData(data.body.data);
@@ -35,30 +35,22 @@ function formatRoomData(data) {
         })
     } else {
         discount.push({
-            discount : 8,
+            discount : 9,
             duration : 3
         });
     }
+    console.log(discount)
     return {
         name : data.name,
         order : data.order,
-        tag : data.tag,
-        users : data.users,
-        price : data.chargeStrategy.price || 100,
+        price : data.chargeStrategy.price,
         desc : data.desc,
         thumb : data.thumb,
-        u3dbg : data.u3dbg,
-        dependencyCharge : data.dependencyCharge ? 1 : 0,
+        icon : data.icon,
+        dependencyCharge : data.charge ? 1 : 0,
         chargeStrategy  : discount,
-        onlineRatio : data.onlineRatio,
-        channelId : data.channelId,
-        living : data.living,
-        deleteRoom : 0,
-        closeLiving : 0,
-        viewAngle : data.viewAngle,
-        controlModel : data.controlModel + '',
-        projectStyle : data.projectStyle + '',
-        eyeStyle : data.eyeStyle + ''
+        channelid : channelid,
+        defaultRoom : data.defaultRoom || 0
     }
 }
 
@@ -69,12 +61,6 @@ var vm = new Vue({
     computed : {
         changeShow : function() {
             return parseInt(this.dependencyCharge,10) ? 'block' : 'none';
-        },
-        closeLivingShow : function() {
-            return this.living ? 'block' : 'none';
-        },
-        roomStatus : function() {
-            return this.living ? '正在直播' : '未直播';
         }
     },
     methods : {
@@ -91,36 +77,15 @@ var vm = new Vue({
             this.removeStrategy(e.id);
         },
         submit : function(e) {
-            var url = window.hosturl + '/lms/room/update';
-            var delurl = window.hosturl + '/lms/room/del'
+            var url = window.hosturl + '/lms/channel/update';
             var self = this;
-            var body = this.formatData();
-            /*是否有删除房间标记*/
-            if(body.deleteRoom){
-                Vue.http.delete(delurl, {params : {id : roomid}})
-                    .then(function(data) {
-                        if(data.body.code == 0){
-                            $('.ui.modal').modal('show');
-                    window.setTimeout(function() {
-                        location.href= '/lms/page/roomlist';
-                    }, 1500);
-                        } else {
-                            alert('提交失败：' + data.body.msg);
-                        }
-                    }, function(e) {
-                        alert('提交失败');
-                        console.log(e)
-                    })
-                    return;
-            }
-            /*未删除房间逻辑*/
-            Vue.http.post(url,body,{params : {id : roomid}})
+            Vue.http.post(url,this.formatData(),{params : {id : channelid}})
             .then(function(data) {
                 if(data.body.code == 0){
                     $('.ui.modal')
                     .modal('show'); 
                     window.setTimeout(function() {
-                        window.location.reload();
+                         window.location.reload();
                     }, 1500);
                 } else {
                     alert('提交失败：' + data.body.msg);
@@ -128,29 +93,19 @@ var vm = new Vue({
 
             }, function(e) {
                 alert('提交失败');
-                console.log(e)
             })           
             return false;
         },
         formatData : function() {
             var res = {
                 name : this.name,
-                channelId : this.getChannelId(),
-                living: this.living ? (parseInt(this.closeLiving,10) ? false : true) : false, //直播时候通过关闭直播间选项来判断，未播时为false
-                onlineRatio : this.onlineRatio,
                 thumb : this.getThumb(),
                 desc : this.desc,
                 charge : parseInt(this.dependencyCharge,10) ? 1 : 0,
-                dependencyCharge : parseInt(this.dependencyCharge,10) ? 1 : 0,
                 order : this.order,
+                icon : this.getIcon(),
                 chargeStrategy : this.getChargeStrategy(),
-                u3dbg : this.getU3dBg(),
-                tag : this.tag,
-                deleteRoom : parseInt(this.deleteRoom,10) ? true : false,
-                viewAngle : this.viewAngle,
-                controlModel : parseInt(this.controlModel,10),
-                projectStyle : parseInt(this.projectStyle,10),
-                eyeStyle : parseInt(this.eyeStyle,10)                
+                defaultRoom : this.getDefaultRoom()
             };
             return res;
         },
@@ -169,7 +124,7 @@ var vm = new Vue({
                 if(charge.del == true) return;
                 discount.push({
                     month : charge.d,
-                    discount : parseFloat(charge.m,10)/10,
+                    discount : parseFloat(charge.m,10)/10
                 });
             })     
             res.discount = discount;       
@@ -178,21 +133,12 @@ var vm = new Vue({
         getThumb : function() {
             return this.$refs.thumbcom.imgurl;
         },
-        getU3dBg : function() {
-            return this.$refs.u3dcom.imgurl;
+        getIcon : function() {
+            return this.$refs.iconcom.imgurl;
         },
-        getChannelId : function() {
-            return this.$refs.channel.rc;
+        getDefaultRoom : function() {
+            return this.$refs.defaultroom.room || null;
         },
-        onAngelBlur : function(e) {
-            var num = e.target.value;
-            if(num < 60){
-                e.target.value = 60;
-            }
-            if(num > 130){
-                e.target.value = 130;
-            }
-        },        
         removeStrategy : function(id) {
             /*组件调用destroy后 refs没有同步减少，所以这么做，vue刚使用不熟悉*/
             this.$refs.charges.map(function(charge) {
@@ -203,7 +149,7 @@ var vm = new Vue({
         }
 
     }
-});    
+});   
 }
 
 
