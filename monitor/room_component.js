@@ -21,6 +21,7 @@ Vue.component('room', {
             .then(function(data) {
                 var data = data.body;
                 var info = data.info || {};
+                console.log(info)
                 self.name = info.name;
                 self.online = info.online;
                 self.tag = info.tag;

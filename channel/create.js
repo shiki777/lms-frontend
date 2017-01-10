@@ -7,17 +7,24 @@ var vm = new Vue({
     data : {
         name : '',
         order : 1,
+        tag : '',
+        // userNum : 1,
         price : 100,
         desc : '',
         thumb : '',
-        icon : '',
-        dependencyCharge : 1,
+        u3dbg : '',
+        dependencyCharge : 0,
         chargeStrategy  : [{
-            discount : 0.9,
+            discount : 9,
             duration : 3,
             id : getId()
         }],
-        onlineRatio : 1
+        onlineRatio : 1,
+        channelId : 0,
+        viewAngle : 90,
+        controlModel : '0',
+        projectStyle : '0',
+        eyeStyle : '0'
     },
     computed : {
         changeShow : function() {
@@ -38,7 +45,7 @@ var vm = new Vue({
             this.removeStrategy(e.id);
         },
         submit : function(e) {
-            var url = window.hosturl + '/lms/channel/add';
+            var url = window.hosturl + '/lms/room/add';
             var self = this;
             Vue.http.post(url,this.formatData())
             .then(function(data) {
@@ -60,12 +67,23 @@ var vm = new Vue({
         formatData : function() {
             var res = {
                 name : this.name,
+                channelId : this.getChannelId(),
+                living: false,
+                onlineRatio : this.onlineRatio,
                 thumb : this.getThumb(),
                 desc : this.desc,
                 charge : parseInt(this.dependencyCharge,10) ? 1 : 0,
+                dependencyCharge : parseInt(this.dependencyCharge,10) ? 1 : 0,
                 order : this.order,
-                icon : this.getIcon(),
-                chargeStrategy : this.getChargeStrategy()
+                chargeStrategy : this.getChargeStrategy(),
+                u3dbg : this.getU3dBg(),
+                // userNum : this.userNum,
+                tag : this.tag,
+                userid : this.getUserIds(),
+                viewAngle : this.viewAngle,
+                controlModel : parseInt(this.controlModel,10),
+                projectStyle : parseInt(this.projectStyle,10),
+                eyeStyle : parseInt(this.eyeStyle,10)
             };
             return res;
         },
@@ -84,7 +102,7 @@ var vm = new Vue({
                 if(charge.del == true) return;
                 discount.push({
                     month : charge.d,
-                    discount : parseFloat(charge.m,10)
+                    discount : parseFloat(charge.m,10)/10
                 });
             })     
             res.discount = discount;       
@@ -93,8 +111,23 @@ var vm = new Vue({
         getThumb : function() {
             return this.$refs.thumbcom.imgurl;
         },
-        getIcon : function() {
-            return this.$refs.iconcom.imgurl;
+        getU3dBg : function() {
+            return this.$refs.u3dcom.imgurl;
+        },
+        getChannelId : function() {
+            return this.$refs.channel.rc;
+        },
+        getUserIds : function() {
+            return this.$refs.userlist.userids;
+        },
+        onAngelBlur : function(e) {
+            var num = e.target.value;
+            if(num < 60){
+                e.target.value = 60;
+            }
+            if(num > 130){
+                e.target.value = 130;
+            }
         },
         removeStrategy : function(id) {
             /*组件调用destroy后 refs没有同步减少，所以这么做，vue刚使用不熟悉*/
