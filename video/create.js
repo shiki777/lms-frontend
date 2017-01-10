@@ -7,7 +7,9 @@ var vm = new Vue({
     data : {
         name : '',
         url : '',
-        thumb : ''
+        thumb : '',
+        order : 1,
+        desc : ''
     },
     computed : {
         changeShow : function() {
@@ -16,9 +18,9 @@ var vm = new Vue({
     },
     methods : {
         submit : function(e) {
-            var url = 'http://127.0.0.1:5000/room/add';
+            var url = window.hosturl + '/lms/video/add';
             var self = this;
-            Vue.http.post(url,{body : this.formatData()})
+            Vue.http.post(url,this.formatData())
             .then(function(data) {
                 if(data.body.code == 0){
                     $('.ui.modal')
@@ -38,6 +40,8 @@ var vm = new Vue({
                 name : this.name,
                 url : this.url,
                 thumb : this.getThumb(),
+                desc : this.desc,
+                order : this.order
             };
             return res;
         },
