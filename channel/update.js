@@ -39,18 +39,19 @@ function formatRoomData(data) {
             duration : 3
         });
     }
-    console.log(discount)
     return {
         name : data.name,
         order : data.order,
         price : data.chargeStrategy.price,
         desc : data.desc,
         thumb : data.thumb,
+        tag : data.tag,
         icon : data.icon,
         dependencyCharge : data.charge ? 1 : 0,
         chargeStrategy  : discount,
         channelid : channelid,
-        defaultRoom : data.defaultRoom || 0
+        defaultRoom : data.defaultRoom || 0,
+        deleteChannel : 0
     }
 }
 
@@ -77,6 +78,11 @@ var vm = new Vue({
             this.removeStrategy(e.id);
         },
         submit : function(e) {
+            var isDel = this.deleteChannel;
+            if(isDel){
+                this.del();
+                return;
+            }
             var data = this.formatData();
             if(!data.defaultRoom){
                 alert('请选择默认房间！');
@@ -101,6 +107,31 @@ var vm = new Vue({
             })           
             return false;
         },
+        del: function() {
+            var url = window.hosturl + '/lms/channel/del'
+            Vue.http.delete(url, {
+                params: {
+                    id: channelid
+                }
+            })
+            .then(function(data) {
+                if (data.body.code == 0) {
+                    $('.ui.modal').modal('show');
+                    window.setTimeout(function() {
+                        location.href = '/lms/page/channellist';
+                    }, 1500);
+                } else {
+                    if (data.body.code == 1) {
+                        alert('删除失败，该频道下还有房间，请先处理对应房间！');
+                    } else {
+                        alert('删除失败 : ' + data.body.msg);
+                    }
+                }
+            }, function(e) {
+                alert('提交失败');
+                console.log(e)
+            })
+        },
         formatData : function() {
             var res = {
                 name : this.name,
@@ -109,6 +140,7 @@ var vm = new Vue({
                 charge : parseInt(this.dependencyCharge,10) ? 1 : 0,
                 order : this.order,
                 icon : this.getIcon(),
+                tag : this.tag,
                 chargeStrategy : this.getChargeStrategy(),
                 defaultRoom : this.getDefaultRoom()
             };

@@ -22,6 +22,12 @@
                             <input type="number" v-model="order"/>    
                         </div>
                     </div>
+                    <div class="fields">
+                        <div class="field">
+                            <label>标签</label>
+                            <input type="text" v-model="tag"/>  
+                        </div> 
+                    </div>
                     <div class="fields two"> 
                         <div class="field">
                             <label>收费</label>
@@ -29,7 +35,14 @@
                                 <option value="0">否</option>
                                 <option value="1">是</option>
                             </select>
-                        </div>                                            
+                        </div> 
+                        <div class="field">
+                            <label>是否删除频道</label>
+                            <select v-model="deleteChannel">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>                                           
                     </div>                   
                     <div class="field">
                         <label>频道简介</label>
