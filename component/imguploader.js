@@ -33,5 +33,4 @@ Vue.component('imguploader',{
             return data.newpath;
         }
     }
-
 });
