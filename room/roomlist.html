@@ -14,13 +14,14 @@
             <div class="wrap">
                 <h1 class="ui header aligned">房间列表</h1>
                 <div>
-                    <select v-model="selectChannel">
+                频道选择：
+                    <select class="ui dropdown" v-model="selectChannel">
                         <option value="all">全部频道</option>
                         <option v-for="channel in channels" v-bind:value="channel">{{channel}}</option>
                     </select>
                 </div>
                 <div class="channel-item" v-for="channel in filterChannels">
-                    <div class="ui header aligned">频道名：{{channel}}</div>
+                    <div class="ui header aligned" style="margin-top:30px;">频道名：{{channel}}</div>
                     <div class="room-wrap">
                         <div class="room-item" v-for="room in rooms[channel]">
                             <a :href="room.link" target="_blank">
