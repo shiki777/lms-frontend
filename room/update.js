@@ -204,8 +204,31 @@ var vm = new Vue({
                     charge.del = true;
                 }
             })
+        },
+        onHostAdd : function() {
+            $('.small.modal')
+            .modal('show');
+        },
+        delHost : function(user) {
+            if(this.users.length <= 1){
+                alert('删除后主播为空，请先增加一位主播再删除！');
+                return;
+            }
+            this.removeUser(user.id);
+        },
+        removeUser : function(id) {
+            var index = this.getUserIndex(id);
+            this.users.splice(index,1);
+        },
+        getUserIndex : function(id) {
+            var index = -1;
+            this.users.map(function(v,ind) {
+                if(index == -1 && v.id == id){
+                    index = ind;
+                }
+            })
+            return index;
         }
-
     }
 });    
 }

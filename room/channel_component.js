@@ -10,7 +10,7 @@ Vue.component('channelselect', {
     beforeCreate : function() {
         var self = this;
         var url = window.hosturl + '/lms/channel/list';
-        Vue.http.jsonp(url,{params : {page : 1,pageSize : 100}})
+        Vue.http.jsonp(url,{params : {page : 1,pageSize : 999}})
             .then(function(data) {
                 if(data.body.code == 0){
                     self.channels = self.formatChannels(data.body.data.list);
