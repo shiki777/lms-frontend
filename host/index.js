@@ -28,7 +28,10 @@ function formatRoomData(data) {
     });
     data.sort();
     return {
-        users : data
+        users : data,
+        currentUser : '',
+        icode : '',
+        newpw : ''
     };
 }
 
@@ -42,18 +45,38 @@ var vm = new Vue({
         getLink : function(id) {
             return window.hosturl + '/lms/page/roomupdate?id=' + id;
         },
+        sendEmail : function() {
+            var url = window.hosturl + '/lms/user/email';
+            Vue.http.post(url, {email : this.currentUser.username,name : this.currentUser.username})
+            .then(function(body) {
+                if(body.data.code == 0){
+                     alert('验证码获取成功，请去邮箱查收!');
+                } else {
+                    alert('验证码获取失败' + body.data.msg);
+                }
+               
+            })
+            .catch(function(e) {
+                alert('验证码获取失败！')
+            })
+        },
         modifyPwd : function(user) {
+            this.currentUser = user;
             $('.ui.modal.pop').modal('show');
         },
         submitPwd : function() {
             var url = window.hosturl + '/lms/user/modifypwd';
             Vue.http.jsonp(url,{params : {
-                username : '277398527@qq.com',
-                pw : 111111,
-                npw : 222222
+                username : this.currentUser.username,
+                pw : this.newpw,
+                code : this.icode
             }})
             .then(function(data) {
-                $('.ui.modal.suc').modal('show');
+                if(data.body.code == 0){
+                    $('.ui.modal.suc').modal('show');
+                } else {
+                    $('.ui.modal.fail').modal('show');
+                }
             })
             .catch(function() {
                 $('.ui.modal.fail').modal('show');

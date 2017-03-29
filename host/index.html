@@ -25,7 +25,8 @@
       <div class="image content">
         <div class="description">
           <div class="ui header">用户密码修改</div>
-          <p>请输入账户密码<input type="text"></p>
+          <div class="ui black button" @click="sendEmail">发送验证码到邮箱</div><p>请输入验证码<input type="text" v-model="icode"></p>
+          请输入新密码<input type="password" v-model="newpw">
         </div>
       </div>
       <div class="actions">
