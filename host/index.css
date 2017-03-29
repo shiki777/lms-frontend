@@ -14,7 +14,6 @@ body > .grid {
 .wrap {
     width: 800px;
     margin: 0 auto;
-    padding-top: 40px;
 }
 
 .username {
@@ -39,4 +38,14 @@ body > .grid {
 .modifybtn {
     width: 120px;
     display: inline-block;
+}
+
+.input-line {
+    height: 38px;
+    line-height: 38px;
+    margin : 5px 0;
+}
+
+.input-line input {
+    margin-left: 3px !important;
 }

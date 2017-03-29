@@ -31,7 +31,8 @@ function formatRoomData(data) {
         users : data,
         currentUser : '',
         icode : '',
-        newpw : ''
+        newpw : '',
+        errmsg : ''
     };
 }
 
@@ -52,7 +53,12 @@ var vm = new Vue({
                 if(body.data.code == 0){
                      alert('验证码获取成功，请去邮箱查收!');
                 } else {
-                    alert('验证码获取失败' + body.data.msg);
+                    if(body.data.msg == 'Internal Server Error.'){
+                        alert('往该邮箱发送验证码失败！');
+                    } else {
+                        alert('验证码获取失败' + body.data.msg);
+                    }
+                    
                 }
                
             })
@@ -65,6 +71,7 @@ var vm = new Vue({
             $('.ui.modal.pop').modal('show');
         },
         submitPwd : function() {
+            var self = this;
             var url = window.hosturl + '/lms/user/modifypwd';
             Vue.http.jsonp(url,{params : {
                 username : this.currentUser.username,
@@ -74,13 +81,29 @@ var vm = new Vue({
             .then(function(data) {
                 if(data.body.code == 0){
                     $('.ui.modal.suc').modal('show');
+                setTimeout(function() {
+                    $('.ui.modal.suc').modal('hide');
+                },1500);                     
                 } else {
+                    self.errmsg = data.body.msg;
                     $('.ui.modal.fail').modal('show');
+                    setTimeout(function() {
+                        $('.ui.modal.fail').modal('hide');
+                    },1500);
                 }
             })
-            .catch(function() {
+            .catch(function(e) {
+                self.errmsg = e;
                 $('.ui.modal.fail').modal('show');
+                setTimeout(function() {
+                    $('.ui.modal.fail').modal('hide');
+                },1500);                
             })
+            this.resetInput();
+        },
+        resetInput : function() {
+            this.icode = '';
+            this.newpw = '';
         }
     }
 });    

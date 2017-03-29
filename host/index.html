@@ -25,13 +25,18 @@
       <div class="image content">
         <div class="description">
           <div class="ui header">用户密码修改</div>
-          <div class="ui black button" @click="sendEmail">发送验证码到邮箱</div><p>请输入验证码<input type="text" v-model="icode"></p>
-          请输入新密码<input type="password" v-model="newpw">
+          <div class="ui black button" @click="sendEmail">发送验证码到邮箱</div>
+          <div class="input-line">
+            <div class="ui input">请输入验证码<input type="text" v-model="icode"></div>
+          </div>
+          <div class="input-line">
+            <div class="ui input">请输入新密码<input type="password" v-model="newpw"></div>
+          </div>
         </div>
       </div>
       <div class="actions">
         
-        <div class="ui black deny button">取消</div>
+        <div class="ui black deny button" @click="resetInput">取消</div>
         <div class="ui positive button" @click="submitPwd">修改</div>
     </div>
     <!-- 修改成功popup -->
@@ -46,7 +51,7 @@
     <div class="ui modal fail">
       <div class="image content">
         <div class="description">
-          <div class="ui header">密码修改失败！</div>
+          <div class="ui header">密码修改失败！{{errmsg}}</div>
         </div>
       </div>   
   </div>  
