@@ -167,10 +167,11 @@ var vm = new Vue({
 })
 
 function getAlertMsg(role) {
+    console.log(role)
     if(l == 'jp'){
         return window.messages[l].message[role] + window.messages[l].message['select'];
     }
-    return window.messages[l].message['select'] + window.messages[l].message['role'];
+    return window.messages[l].message['select'] + window.messages[l].message[role];
 }
 
 function getId() {

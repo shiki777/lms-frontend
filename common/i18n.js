@@ -119,7 +119,7 @@ var messages = {
             shoufei : '課金',
             channeldesc : 'チャンネル紹介',
             morenroom : 'デフォルト部屋',
-            morenpindao : 'デフォルト チャンネル'
+            morenpindao : 'デフォルト チャンネル',
             icon : 'チャンネルアイコン',
             zhuce : '実況管理システム登録',
             querenmima : 'パスワードを確認',
