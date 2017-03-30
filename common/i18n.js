@@ -53,10 +53,16 @@ var messages = {
             shoufei : '收费',
             channeldesc : '频道简介',
             morenroom : '默认房间选取',
+            morenpindao : '默认频道',
             icon : '角标上传',
             zhuce : '直播管理系统—注册',
             querenmima : '确认密码',
-            roomid : '房间ID'
+            roomid : '房间ID',
+            select : '请选择',
+            fail : '失败',
+            suc : '成功',
+            gongxi : '恭喜您',
+            link : '面将跳转到....'
         }
     },
     ja : {
@@ -113,10 +119,16 @@ var messages = {
             shoufei : '課金',
             channeldesc : 'チャンネル紹介',
             morenroom : 'デフォルト部屋',
+            morenpindao : 'デフォルト チャンネル'
             icon : 'チャンネルアイコン',
             zhuce : '実況管理システム登録',
             querenmima : 'パスワードを確認',
-            roomid : '部屋ID'            
+            roomid : '部屋ID',
+            select : 'お選択してください',
+            fail : '失敗',
+            suc : '成功',  
+            gongxi : 'おめでとうございます',
+            link : 'ページジャンプする....'            
         }
     }
 };
