@@ -5,6 +5,7 @@ var id = 1;
 var submitting = false;
 
 var vm = new Vue({
+    i18n: i18n,
     el : '#page',
     data : {
         name : '',
@@ -160,7 +161,8 @@ var vm = new Vue({
         }
 
     }
-});
+})
+
 
 function getId() {
     return id++;
