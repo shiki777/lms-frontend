@@ -167,7 +167,6 @@ var vm = new Vue({
 })
 
 function getAlertMsg(role) {
-    console.log(role)
     if(l == 'jp'){
         return window.messages[l].message[role] + window.messages[l].message['select'];
     }
