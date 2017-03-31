@@ -19,11 +19,11 @@
             </div>
         </div>
     </div> -->
-    <div class="ui middle aligned center aligned grid">
+    <div class="ui middle aligned center aligned grid" id="page">
   <div class="column">
     <h2 class="ui teal image header">
       <div class="content">
-        Ready VR 直播管理系统
+        {{$t("message.lmsName")}}
       </div>
     </h2>
     <form class="ui large form">
@@ -31,16 +31,16 @@
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="name" placeholder="用户名" id="username">
+            <input type="text" name="name" :placeholder="ep" id="username">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="密码" id="pwd">
+            <input type="password" name="password" :placeholder="pp" id="pwd">
           </div>
         </div>
-        <div class="ui fluid large teal submit button" id="loginBtn">登录</div>
+        <div class="ui fluid large teal submit button" id="loginBtn">{{$t("message.login")}}</div>
       </div>
       <div class="ui error message"></div>
     </form>
@@ -50,6 +50,8 @@
 <script src="../lib/semantic.min.js"></script>
 <script src="../lib/vue.js"></script> 
 <script src="../lib/vue-resource.js"></script> 
+<script src="../lib/vue-i18n.min.js"></script> 
+<script src="../common/i18n.js"></script> 
 <script src="../common/host.js"></script>
 <script src="./login.js"></script>
 </body>
