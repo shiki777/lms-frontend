@@ -49,7 +49,7 @@ var vm = new Vue({
             })
         },
         /*监听收费策略删除，从数据中移除对应数据*/
-        onChargeRemove : function(e) {
+        onChargeRemove : function(e) {m
             this.removeStrategy(e.id);
         },
         submit : function(e) {
